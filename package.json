@@ -1,0 +1,35 @@
+{
+  "name": "create-svelte-component",
+  "version": "0.0.1",
+  "description": "Utility to play with svelte web components",
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "fixturify-project": "^2.1.0",
+    "jest": "^26.0.1",
+    "release-it": "^13.6.0",
+    "release-it-lerna-changelog": "^2.3.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": true
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
+  }
+}
