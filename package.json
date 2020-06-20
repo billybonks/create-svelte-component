@@ -1,5 +1,5 @@
 {
-  "name": "create-svelte-component",
+  "name": "create-svelte-web-component",
   "version": "0.0.1",
   "description": "Utility to play with svelte web components",
   "license": "ISC",
