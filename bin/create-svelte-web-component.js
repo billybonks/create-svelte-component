@@ -13,7 +13,7 @@ let packages = {
 
 const DETECT_TRAILING_WHITESPACE = /\s+$/;
 
-const ROLLUP_CONFIG = ```
+const ROLLUP_CONFIG = `
 import svelte from 'rollup-plugin-svelte';
 
 export default {
@@ -37,7 +37,7 @@ export default {
     sourcemap: true,
   },
 };
-```
+`
 
 async function main() {
   console.log('updating package')
@@ -52,7 +52,7 @@ function isYarn() {
 }
 
 async function installDependencies() {
-  if (labelsOnly || skipInstall) {
+  if (skipInstall) {
     return;
   }
 
