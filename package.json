@@ -32,5 +32,8 @@
       "release": true,
       "tokenRef": "GITHUB_AUTH"
     }
+  },
+  "dependencies": {
+    "execa": "^4.0.2"
   }
 }
