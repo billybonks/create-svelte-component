@@ -40,6 +40,7 @@ export default {
 ```
 
 async function main() {
+  console.log('updating package')
   await updatePackage();
   fs.writeFileSync('rollup.js', ROLLUP_CONFIG, { encoding: 'utf8' });
   execa('npm', ['install']);
