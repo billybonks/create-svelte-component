@@ -8,6 +8,7 @@
   "scripts": {
     "test": "jest"
   },
+  "bin": "bin/create-svelte-web-component.js",
   "devDependencies": {
     "fixturify-project": "^2.1.0",
     "jest": "^26.0.1",
