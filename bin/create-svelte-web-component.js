@@ -70,7 +70,7 @@ function updatePackage(){
   if(!pkg.devDependencies) {
     pkg.devDependencies = {};
   }
-  fs.mkdirSync('./src/ui');
+  fs.mkdirSync('./src/ui', { recursive: true });
   Object.entries(packages).forEach(function(entry){
     pkg.devDependencies[entry[0]] = entry[1];
   });
