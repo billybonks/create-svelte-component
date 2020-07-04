@@ -67,6 +67,9 @@ function updatePackage(){
   let contents = fs.readFileSync('package.json', { encoding: 'utf8' });
   let trailingWhitespace = DETECT_TRAILING_WHITESPACE.exec(contents);
   let pkg = JSON.parse(contents);
+  if(!pkg.devDependencies) {
+    pkg.devDependencies = {};
+  }
   Object.entries(packages).forEach(function(entry){
     pkg.devDependencies[entry[0]] = entry[1];
   });
