@@ -36,6 +36,16 @@ export default {
   },
 };
 `
+
+const indexHtml = `
+<html>
+<body>
+  <my-component />
+</body>
+<script src="dist/bundle.js"></script>
+</html>
+`
+
 const svelteBaseTemplate = `hello world\n<svelte:options tag="my-component"/>`
 
 async function main() {
@@ -80,6 +90,7 @@ function updatePackage(){
   }
 
   fs.writeFileSync('package.json', updatedContents, { encoding: 'utf8' });
+  fs.writeFileSync('index.html', indexHtml, { encoding: 'utf8' });
   fs.writeFileSync('./src/ui/my-component.svelte', svelteBaseTemplate, { encoding: 'utf8' });
 }
 
