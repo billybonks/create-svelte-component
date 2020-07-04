@@ -6,29 +6,27 @@ const execa = require('execa');
 const skipInstall = process.argv.includes('--no-install');
 
 let packages = {
-  "@rollup/plugin-multi-entry": "^3.0.1",
   "@rollup/plugin-node-resolve": "^8.0.0",
   "rollup-plugin-svelte": "^5.2.2",
+  "svelte": "^3.23.2"
 }
 
 const DETECT_TRAILING_WHITESPACE = /\s+$/;
 
 const ROLLUP_CONFIG = `
 import svelte from 'rollup-plugin-svelte';
+import resolve from '@rollup/plugin-node-resolve';
 
 export default {
   input: [
-    'src/component.svelte',
+    'src/ui/my-component.svelte',
   ],
   plugins: [
-    typescript({
-      exclude: 'node_modules/**',
-    }),
     svelte({
       include: 'src/ui/**/*.svelte',
       customElement: true,
     }),
-    multi()
+    resolve()
   ],
 
   output: {
@@ -38,6 +36,7 @@ export default {
   },
 };
 `
+const svelteBaseTemplate = `hello world\n<svelte:options tag="my-component"/>`
 
 async function main() {
   console.log('updating package')
@@ -81,7 +80,7 @@ function updatePackage(){
   }
 
   fs.writeFileSync('package.json', updatedContents, { encoding: 'utf8' });
-  fs.writeFileSync('./src/ui/my-component.svelte', updatedContents, { encoding: 'utf8' });
+  fs.writeFileSync('./src/ui/my-component.svelte', svelteBaseTemplate, { encoding: 'utf8' });
 }
 
 if (require.main === module) {
