@@ -42,7 +42,7 @@ export default {
 async function main() {
   console.log('updating package')
   await updatePackage();
-  fs.writeFileSync('rollup.js', ROLLUP_CONFIG, { encoding: 'utf8' });
+  fs.writeFileSync('rollup.config.js', ROLLUP_CONFIG, { encoding: 'utf8' });
   execa('npm', ['install']);
   await installDependencies();
 }
@@ -70,6 +70,7 @@ function updatePackage(){
   if(!pkg.devDependencies) {
     pkg.devDependencies = {};
   }
+  fs.mkdirSync('./src/ui');
   Object.entries(packages).forEach(function(entry){
     pkg.devDependencies[entry[0]] = entry[1];
   });
@@ -80,6 +81,7 @@ function updatePackage(){
   }
 
   fs.writeFileSync('package.json', updatedContents, { encoding: 'utf8' });
+  fs.writeFileSync('./src/ui/my-component.svelte', updatedContents, { encoding: 'utf8' });
 }
 
 if (require.main === module) {
